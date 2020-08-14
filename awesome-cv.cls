@@ -44,6 +44,14 @@
 
 
 %-------------------------------------------------------------------------------
+%                Configuration for directory locations
+%-------------------------------------------------------------------------------
+% Configure a directory location for fonts(default: 'fonts/')
+\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
+\fontdir
+
+
+%-------------------------------------------------------------------------------
 %                3rd party packages
 %-------------------------------------------------------------------------------
 % Needed to make fixed length table
@@ -74,7 +82,7 @@
 \RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
-\defaultfontfeatures{Path = ./fonts/}
+\defaultfontfeatures{Path=\@fontdir}
 \RequirePackage{fontawesome}
 \RequirePackage[default,opentype]{sourcesanspro}
 % Needed for the photo ID
@@ -89,15 +97,6 @@
   pdfsubject={},
   pdfkeywords={}
 }
-
-
-%-------------------------------------------------------------------------------
-%                Configuration for directory locations
-%-------------------------------------------------------------------------------
-% Configure a directory location for fonts(default: 'fonts/')
-\newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
-\fontdir
-
 
 %-------------------------------------------------------------------------------
 %                Configuration for layout
@@ -124,7 +123,7 @@
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
 \definecolor{darkgray}{HTML}{333333}
-\definecolor{gray}{HTML}{5D5D5D}
+\definecolor{gray}{HTML}{666666}
 \definecolor{lightgray}{HTML}{999999}
 % Basic colors
 \definecolor{green}{HTML}{C2E15F}
@@ -148,18 +147,18 @@
 \definecolor{awesome-darknight}{HTML}{131A28}
 \colorlet{awesome}{awesome-red}
 % Edudrift colors
-\definecolor{edudrift-orange}{HTML}{FF6F00}
-\definecolor{edudrift-blue}{HTML}{0086EF}
+\definecolor{eduDft-orange}{HTML}{FF6F00}
+\definecolor{eduDft-blue}{HTML}{0086EF}
+\definecolor{eduDft-darkblue}{HTML}{266BF0}
 
 % Boolean value to switch section color highlighting
 \newbool{acvSectionColorHighlight}
 \setbool{acvSectionColorHighlight}{true}
 
 % Awesome section color
-\def\@sectioncolor#1#2#3{%
-  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
+\def\@sectioncolor#1{%
+  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1}}{#1}%
 }
-
 
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
@@ -181,7 +180,7 @@
 %   BoldItalicFont=*-MediumItalic,
 % ]{Almari}
 
-\newcommand*{\footerfont}{\sourcesanspro}
+\newcommand*{\footerfont}{\headerfont}
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
 
@@ -203,8 +202,8 @@
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{text} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\bfseries\color{text} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
